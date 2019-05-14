@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include "parser_struct.h"
 #include "parser.h"
 
@@ -22,7 +24,7 @@ int parse_file(struct parser* p)
         {
             if (target_len == 0)
             {
-                // error
+                printf("no rule\n");
                 return 1;
             }
             p->target = arr_add(my_strncpy(line, target_len), p->target);
@@ -43,7 +45,7 @@ int parse_file(struct parser* p)
                 }
                 if (line[0] != '\t')
                 {
-                    // error
+                    printf("no tab\n");
                     return 1;
                 }
                 my_strcat(r, line);

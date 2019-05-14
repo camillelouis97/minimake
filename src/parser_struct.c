@@ -1,4 +1,4 @@
-#include "struct_parser.h"
+#include "parser_struct.h"
 
 struct parser* init_parser(void)
 {

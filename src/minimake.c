@@ -1,6 +1,3 @@
-//#define _GNU_SOURCE
-#define _POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700
-
 #include "option_handler.h"
 #include "parser_struct.h"
 #include "parser.h"
@@ -14,6 +11,8 @@ int main(int argc, char* argv[])
         return 0;
     if (parse_file(p))
         return 1;
+    for (int i = 0; p->target[i] != NULL; i++)
+      printf(p->target[i]);
     free_parser(p);
     return 0;
 }

@@ -1,9 +1,9 @@
 CC=gcc
-CFLAGS=-std=c99 -pedantic -Werror -Wall -Wextra -I./src
+CFLAGS=-std=c99 -pedantic -Werror -Wall -Wextra -g -I./src
 
 EXEC=minimake
 
-SRC=arr_utils.c exec_rules.c main.c parser.c parser_struct.c option_handler.c
+SRC=arr_utils.c exec_rules.c minimake.c parser.c parser_struct.c option_handler.c
 
 LIB_SRC=$(SRC:.c=.o)
 
@@ -14,8 +14,6 @@ VPATH=./src
 $(EXEC): $(LIB_SRC)
 
 all: $(EXEC)
-
-check: $(EXEC)
 
 clean:
 	rm -f $(EXEC)
