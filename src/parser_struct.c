@@ -6,6 +6,7 @@ struct parser* init_parser(void)
     if (!p)
         return NULL;
     p->h_opt = 0;
+    p->index = -1;
     p->f = NULL;
     p->target = NULL;
     p->dep = NULL;

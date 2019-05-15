@@ -4,6 +4,7 @@
 typedef struct parser
 {
     int h_opt;
+    int index;
     FILE* f;
     char** target;
     char** dep;

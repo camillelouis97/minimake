@@ -9,10 +9,25 @@ int main(int argc, char* argv[])
         return 1;
     if (p->h_opt)
         return 0;
-    if (parse_file(p))
-        return 1;
+    int res;
+    if ((res = parse_file(p)))
+        return res;
+    int i = 0;
+    for (; p->target[i] != NULL; i++);
+    printf("%d: target\n", i);
+    i = 0;
+    for (; p->dep[i] != NULL; i++);
+    printf("%d: dep\n", i);
+    i = 0;
+    for (; p->rule[i] != NULL; i++);
+    printf("%d: rule\n", i);
     for (int i = 0; p->target[i] != NULL; i++)
-      printf(p->target[i]);
+    {
+      printf("%d:\n", i);
+      printf("%s\n", p->target[i]);
+      printf("%s\n", p->dep[i]);
+      printf("%s\n", p->rule[i]);
+    }
     free_parser(p);
     return 0;
 }

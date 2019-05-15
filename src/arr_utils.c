@@ -34,9 +34,39 @@ char** arr_add(char* str, char** arr)
         int i = 0;
         for (; arr[i] != NULL; i++)
             len += strlen(arr[i]);
-        arr = realloc(arr, len + strlen(str));
+        arr = realloc(arr, len + strlen(str) + 1);
         arr[i] = str;
         arr[i + 1] = NULL;
+    }
+    return arr;
+}
+
+char** arr_add_index(char* str, char** arr, int index)
+{
+    if (!str)
+        return NULL;
+    if (arr == NULL)
+    {
+        arr = malloc(strlen(str) + sizeof(NULL));
+        arr[0] = str;
+        arr[1] = NULL;
+    }
+    else
+    {
+        int len = 0;
+        int i = 0;
+        for (; arr[i] != NULL; i++)
+            len += strlen(arr[i]);
+        for (int j = i; j < index; j++)
+          len += 1;
+        arr = realloc(arr, len + strlen(str) + 1);
+        if (arr[index] == NULL)
+          arr[index] = str;
+        else
+          my_strcat(arr[index], str);
+        arr[index + 1] = NULL;
+        for (; i < index; i++)
+          arr[i][0] = '\0';
     }
     return arr;
 }

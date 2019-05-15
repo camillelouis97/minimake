@@ -11,7 +11,7 @@ int exec_rules(char* argv[], int argc, struct parser* p)
                 if (strcmp(p->target[j], argv[i]))
                 {
                     is_pres = 1;
-                    // exec rule
+                    
                 }
             if (!is_pres)
             {
